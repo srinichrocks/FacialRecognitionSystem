@@ -3,6 +3,7 @@ import cv2 as cv
 
 
 img = cv.imread('Photos/kush.jpeg')
+print(img)
 # cv.imshow('Ripped Jeans', img)
 
 #Rescale Function
@@ -22,16 +23,16 @@ blur = cv.GaussianBlur(img, (7,7), cv.BORDER_DEFAULT)
 # cv.imshow('Blur', blur)
 
 #Resize
-resized = cv.resize(img, (500, 600))
+resized = cv.resize(img, (500, 700))
 # cv.imshow('Resized', resized)
 
 #Edge Cascade
-canny = cv.Canny(resized, 125, 175)
+canny = cv.Canny(img, 125, 175)
 # cv.imshow('Edges', canny)
 
 #Dilating the image
 dilated = cv.dilate(canny, (7,7), iterations = 3)
-# cv.imshow('Dilated', dilated)
+cv.imshow('Dilated', dilated)
 
 #Eroding
 eroded = cv.erode(dilated, (7,7), iterations = 3)
