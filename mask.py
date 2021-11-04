@@ -1,6 +1,5 @@
 import cv2 as cv
 import numpy as np
-import matplotlib.pyplot as plt
 
 img = cv.imread('Photos/kush.jpeg')
 img2 = cv.imread('Photos/sri.jpg')
@@ -16,17 +15,8 @@ mask = cv.circle(blank, (img.shape[1]//2,img.shape[0]//2), 200, 255, -1)
 masked_image = cv.bitwise_and(img, img, mask = mask)
 # cv.imshow('Masked Image',masked_image)
 
-#Histogram
-my_hist = cv.calcHist([img, img2], [0], mask, [256], [0,256])
-kush_hist = cv.calcHist([img,img2], [1], mask, [256], [0,256])
-plt.figure()
-plt.title('My histogram')
-plt.xlabel('Bins')
-plt.ylabel('# of pixels')
-plt.plot(kush_hist)
-plt.plot(my_hist)
-plt.xlim([0,256])
-plt.show()
+
+
 
 
 

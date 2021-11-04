@@ -1,9 +1,12 @@
 import cv2 as cv
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 
 img = cv.imread('Photos/kush.jpeg')
-print(img)
+img2 = cv.imread('Photos/sri.jpg')
+# print(img[0])
 # cv.imshow('Ripped Jeans', img)
 
 #Rescale Function
@@ -27,7 +30,7 @@ resized = cv.resize(img, (500, 700))
 # cv.imshow('Resized', resized)
 
 #Edge Cascade
-canny = cv.Canny(img, 125, 175)
+canny = cv.Canny(img2, 125, 175)
 # cv.imshow('Edges', canny)
 
 #Dilating the image
@@ -45,5 +48,22 @@ cropped = img[10:20, 20:40]
 #Color shift
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 # cv.imshow('HSV', hsv)
+
+#Thresholding
+threshold, thresh = cv.threshold(img, 225, 255, cv.THRESH_BINARY)
+# cv.imshow('Simple Thresholded', thresh)
+
+#Histogram
+# my_hist = cv.calcHist([img, img2], [0], None, [256], [0,256])
+# kush_hist = cv.calcHist([img,img2], [1], None, [256], [0,256])
+# plt.figure()
+# plt.title('My histogram')
+# plt.xlabel('Bins')
+# plt.ylabel('# of pixels')
+# plt.plot(kush_hist)
+# plt.plot(my_hist)
+# plt.xlim([0,256])
+# plt.show()
+
 
 cv.waitKey(0)
